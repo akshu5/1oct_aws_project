@@ -3,9 +3,6 @@ import pickle
 import numpy as np
 import json,CONFIG
 
-
-
-
 with open(CONFIG.MODEL_PATH,'rb') as file:
     model=pickle.load(file)
 with open(CONFIG.ASSET_PATH,'r')as file:
@@ -24,11 +21,6 @@ def data():
 
     data=np.zeros(len(col))
 
-    #SepalLengthCm=data['html_sepal_length']
-    #SepalWidthCm=data['html_sepal_width']
-    #PetalLengthCm=data['html_petal_length']
-    #PetalWidthCm=data['html_petal_width']
-
     data[0] = input_data['sepal_length']
     data[1] = input_data['sepal_width']
     data[2] = input_data['petal_length']
@@ -43,7 +35,7 @@ def data():
         iris_value = "VERSICOLOR"
     if result[0] ==2:
         iris_value = "VIRGINICA"
-    return str(iris_value)
+    return render_template("index.html",PREDICT_VALUE=iris_value)
 
 
 if __name__ == "__main__":
